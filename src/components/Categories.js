@@ -1,16 +1,16 @@
-import { FlatList } from "react-native";
+import { FlatList, View } from "react-native";
 import CategoryItem from "./CategoryItem";
 
-
-export default function Categories({term,setTerm,commonItems}) {
+export default function Categories({ term, setTerm, commonItems }) {
   return (
-    <FlatList
+    <View>
+      <FlatList
         data={commonItems}
         renderItem={({ item, index }) => (
           <CategoryItem
             name={item.name}
             url={item.url}
-            index={index}
+            index={index} 
             active={term === item.name}
             handlePress={() => setTerm(item.name)}
           />
@@ -19,5 +19,6 @@ export default function Categories({term,setTerm,commonItems}) {
         showsHorizontalScrollIndicator={false}
         keyExtractor={(category) => category.name}
       />
-  )
+    </View>
+  );
 }
